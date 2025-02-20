@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - المشرف</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(-45deg, #06031a, #2c0b3b, #000000);
+            background-size: 200% 100%;
+            animation: moveGradient 45s infinite linear;
+        }
+
+        @keyframes moveGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .admin-login-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            width: 320px;
+            backdrop-filter: blur(8px);
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 8px;
+            text-align: left;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #000000;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .menu {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 30px;
+            color: white;
+        }
+
+        .menu-content {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .menu-content a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        .submenu {
+            display: none;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-login-container" id="admin-login">
+        <h2>تسجيل دخول المشرف</h2>
+        <form>
+            <label for="admin-username">اسم المستخدم</label>
+            <input type="text" id="admin-username" placeholder="أدخل اسم المستخدم" required>
+
+            <label for="admin-password">كلمة المرور</label>
+            <input type="password" id="admin-password" placeholder="أدخل كلمة المرور" required>
+
+            <button type="submit" onclick="showAdminPanel(event)">دخول</button>
+        </form>
+    </div>
+
+    <div class="menu hidden" id="admin-panel">
+        &#9776;
+        <div class="menu-content" id="menu">
+            <a href="#" onclick="toggleSubmenu()">إضافة منتج ▾</a>
+            <div class="submenu" id="submenu">
+                <a href="#">Instagram</a>
+                <a href="#">Snapchat</a>
+                <a href="#">Twitter</a>
+                <a href="#">TikTok</a>
+            </div>
+            <a href="#">دعم فني</a>
+            <a href="#">إغلاق حساب مستخدم</a>
+        </div>
+    </div>
+
+    <script>
+        function showAdminPanel(event) {
+            event.preventDefault();
+            document.getElementById('admin-login').style.display = 'none';
+            document.getElementById('admin-panel').classList.remove('hidden');
+        }
+
+        function toggleSubmenu() {
+            let submenu = document.getElementById('submenu');
+            submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>

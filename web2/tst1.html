@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(-45deg, #06031a, #2c0b3b, #000000);
+            background-size: 200% 100%;
+            animation: moveGradient 45s infinite linear;
+        }
+
+        @keyframes moveGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .menu {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 30px;
+            color: white;
+        }
+
+        .menu-content {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .menu-content a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        .login-container, .register-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            width: 320px;
+            backdrop-filter: blur(8px);
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 8px;
+            text-align: left;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #000000;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        
+		
+        button:hover {
+            background: #45a049;
+        }
+
+        .hidden { display: none; }
+
+        .login-container p a, .register-container p a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-container p a:hover, .register-container p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu" onclick="toggleMenu()">&#9776;</div>
+    <div class="menu-content" id="menu">
+        <a href="#" onclick="showLogin()">تسجيل الدخول</a>
+        <a href="#" onclick="showRegister()">إنشاء حساب</a>
+        <a href="#">المتجر</a>
+        <a href="#">الصفحة الرئيسية</a>
+    </div>
+
+    <div class="login-container" id="login-container">
+        <h2>تسجيل الدخول</h2>
+        <form>
+            <label for="username">اسم المستخدم</label>
+            <input type="text" id="username" placeholder="أدخل اسم المستخدم" required>
+
+            <label for="password">كلمة المرور</label>
+            <input type="password" id="password" placeholder="أدخل كلمة المرور" required>
+
+            <button type="submit">دخول</button>
+        </form>
+        <p><a href="#" onclick="showRegister()">إنشاء حساب جديد</a></p>
+    </div>
+
+    <div class="register-container hidden" id="register-container">
+        <h2>إنشاء حساب</h2>
+        <form>
+            <label for="new-username">اسم المستخدم</label>
+            <input type="text" id="new-username" placeholder="أدخل اسم المستخدم" required>
+
+            <label for="fullname">الاسم الثلاثي</label>
+            <input type="text" id="fullname" placeholder="أدخل اسمك الثلاثي" required>
+
+            <label for="email">البريد الإلكتروني</label>
+            <input type="email" id="email" placeholder="أدخل بريدك الإلكتروني" required>
+
+            <label for="phone">رقم الهاتف</label>
+            <input type="tel" id="phone" placeholder="أدخل رقم هاتفك" required>
+
+            <button type="submit">إنشاء حساب</button>
+        </form>
+        <p><a href="#" onclick="showLogin()">العودة إلى تسجيل الدخول  </a></p>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            let menu = document.getElementById('menu');
+            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+        }
+        
+        function showRegister() {
+            document.getElementById('login-container').classList.add('hidden');
+            document.getElementById('register-container').classList.remove('hidden');
+        }
+        
+        function showLogin() {
+            document.getElementById('register-container').classList.add('hidden');
+            document.getElementById('login-container').classList.remove('hidden');
+        }
+    </script>A
+</body>
+</html>
